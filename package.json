@@ -1,0 +1,50 @@
+{
+  "name": "vercel-blob-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for managing personal media files in Vercel Blob storage",
+  "main": "dist/index.js",
+  "bin": {
+    "vercel-blob-mcp": "dist/index.js"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@vercel/blob": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "vercel",
+    "blob",
+    "storage",
+    "claude"
+  ],
+  "author": "strzhao",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strzhao/vercel-blob-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/strzhao/vercel-blob-mcp/issues"
+  },
+  "homepage": "https://github.com/strzhao/vercel-blob-mcp#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
