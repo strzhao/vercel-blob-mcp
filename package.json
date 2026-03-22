@@ -1,6 +1,6 @@
 {
   "name": "assets-store-mcp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "MCP server for managing personal assets (images for blog posts, articles, etc.) in Vercel Blob storage",
   "main": "dist/index.js",
   "bin": {
