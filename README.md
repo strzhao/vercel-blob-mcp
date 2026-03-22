@@ -1,16 +1,16 @@
-# vercel-blob-mcp
+# assets-store-mcp
 
-MCP server for managing personal media files (images, audio, video, etc.) in [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) storage.
+MCP server for managing personal assets (images for blog posts, articles, etc.) in [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) storage.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `blob_upload` | Upload a local file to Vercel Blob, returns public URL |
-| `blob_list` | List files with optional prefix filter and pagination |
-| `blob_head` | Get metadata of a blob (size, content type, upload time) |
-| `blob_delete` | Delete one or more blobs by URL |
-| `blob_copy` | Copy a blob to a new path |
+| `assets_upload` | Upload a local file to your personal assets store, returns public URL |
+| `assets_list` | List files with optional prefix filter and pagination |
+| `assets_head` | Get metadata of an asset (size, content type, upload time) |
+| `assets_delete` | Delete one or more assets by URL |
+| `assets_copy` | Copy an asset to a new path |
 
 ## Setup
 
@@ -25,9 +25,9 @@ Add to your `.mcp.json`:
 ```json
 {
   "mcpServers": {
-    "vercel-blob": {
+    "assets-store": {
       "command": "npx",
-      "args": ["-y", "vercel-blob-mcp"],
+      "args": ["-y", "assets-store-mcp"],
       "env": {
         "BLOB_READ_WRITE_TOKEN": "your_token_here"
       }
@@ -46,11 +46,9 @@ npm run build    # Compile TypeScript
 
 ## Publishing
 
-Tag a release to trigger automatic npm publish via GitHub Actions:
+Tag a release to trigger automatic npm publish via GitHub Actions (OIDC, no token secret needed):
 
 ```bash
 npm version patch   # or minor / major
 git push --follow-tags
 ```
-
-> **Note:** Add `NPM_TOKEN` to GitHub repo Settings → Secrets and variables → Actions before the first publish.

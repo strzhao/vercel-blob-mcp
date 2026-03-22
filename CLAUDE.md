@@ -1,4 +1,4 @@
-# vercel-blob-mcp
+# assets-store-mcp
 
 ## 项目说明
 
@@ -26,11 +26,11 @@ git push --follow-tags
 
 | Tool | 说明 |
 |------|------|
-| `blob_upload` | 上传本地文件，返回公开 URL |
-| `blob_list` | 列出文件，支持 prefix 过滤和分页 |
-| `blob_head` | 获取文件元信息（大小、类型、上传时间） |
-| `blob_delete` | 批量删除文件（传 URL 数组） |
-| `blob_copy` | 复制文件到新路径 |
+| `assets_upload` | 上传本地文件，返回公开 URL |
+| `assets_list` | 列出文件，支持 prefix 过滤和分页 |
+| `assets_head` | 获取文件元信息（大小、类型、上传时间） |
+| `assets_delete` | 批量删除文件（传 URL 数组） |
+| `assets_copy` | 复制文件到新路径 |
 
 ## 类型注意
 

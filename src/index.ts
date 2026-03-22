@@ -20,7 +20,7 @@ function getToken(): string {
 
 const server = new Server(
   {
-    name: "vercel-blob-mcp",
+    name: "assets-store-mcp",
     version: "0.1.0",
   },
   {
@@ -32,8 +32,8 @@ const server = new Server(
 
 const tools = [
   {
-    name: "blob_upload",
-    description: "Upload a local file to Vercel Blob storage and return the public URL",
+    name: "assets_upload",
+    description: "Upload a local file to your personal assets store (for blog posts, articles, etc.) and return the public URL",
     inputSchema: {
       type: "object",
       properties: {
@@ -50,8 +50,8 @@ const tools = [
     },
   },
   {
-    name: "blob_list",
-    description: "List files in Vercel Blob storage with optional prefix filtering and pagination",
+    name: "assets_list",
+    description: "List files in your personal assets store with optional prefix filtering and pagination",
     inputSchema: {
       type: "object",
       properties: {
@@ -72,8 +72,8 @@ const tools = [
     },
   },
   {
-    name: "blob_head",
-    description: "Get metadata of a specific blob by its URL (size, content type, upload time, etc.)",
+    name: "assets_head",
+    description: "Get metadata of a specific asset by its URL (size, content type, upload time, etc.)",
     inputSchema: {
       type: "object",
       properties: {
@@ -86,8 +86,8 @@ const tools = [
     },
   },
   {
-    name: "blob_delete",
-    description: "Delete one or more blobs from Vercel Blob storage",
+    name: "assets_delete",
+    description: "Delete one or more assets from your personal assets store",
     inputSchema: {
       type: "object",
       properties: {
@@ -101,8 +101,8 @@ const tools = [
     },
   },
   {
-    name: "blob_copy",
-    description: "Copy a blob to a new path in Vercel Blob storage",
+    name: "assets_copy",
+    description: "Copy an asset to a new path in your personal assets store",
     inputSchema: {
       type: "object",
       properties: {
@@ -131,7 +131,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const token = getToken();
 
     switch (name) {
-      case "blob_upload": {
+      case "assets_upload": {
         if (!args || typeof args.localPath !== "string") {
           throw new Error("localPath is required and must be a string");
         }
@@ -161,7 +161,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      case "blob_list": {
+      case "assets_list": {
         const options: Record<string, unknown> = { token };
         if (typeof args?.prefix === "string") options.prefix = args.prefix;
         if (typeof args?.cursor === "string") options.cursor = args.cursor;
@@ -186,7 +186,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      case "blob_head": {
+      case "assets_head": {
         if (!args || typeof args.url !== "string") {
           throw new Error("url is required and must be a string");
         }
@@ -209,7 +209,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      case "blob_delete": {
+      case "assets_delete": {
         if (!args || !Array.isArray(args.urls) || args.urls.length === 0) {
           throw new Error("urls is required and must be a non-empty array of strings");
         }
@@ -226,7 +226,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
       }
 
-      case "blob_copy": {
+      case "assets_copy": {
         if (!args || typeof args.fromUrl !== "string" || typeof args.toPathname !== "string") {
           throw new Error("fromUrl and toPathname are required strings");
         }
@@ -265,7 +265,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("vercel-blob-mcp running on stdio");
+  console.error("assets-store-mcp running on stdio");
 }
 
 main().catch((error) => {

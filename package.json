@@ -1,10 +1,10 @@
 {
-  "name": "vercel-blob-mcp",
+  "name": "assets-store-mcp",
   "version": "0.1.0",
-  "description": "MCP server for managing personal media files in Vercel Blob storage",
+  "description": "MCP server for managing personal assets (images for blog posts, articles, etc.) in Vercel Blob storage",
   "main": "dist/index.js",
   "bin": {
-    "vercel-blob-mcp": "dist/index.js"
+    "assets-store-mcp": "dist/index.js"
   },
   "type": "module",
   "files": [
@@ -28,8 +28,8 @@
   },
   "keywords": [
     "mcp",
-    "vercel",
-    "blob",
+    "assets",
+    "personal",
     "storage",
     "claude"
   ],
